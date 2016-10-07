@@ -1,6 +1,7 @@
 #include "myString.hpp"
 // Constructor & Destructor
 myString::myString() {
+	string = new char[0];
 }
 myString::myString(const char *str) {
 	size_t len = strlen(str);
