@@ -22,5 +22,9 @@ public:
 	size_t size() const noexcept;
 	/* myString.length() */
 	size_t length() const noexcept;
+	/* myString.clear() */
+	void clear() noexcept;
+	/* myString.empty() */
+	bool empty() const noexcept;
 };
 #endif

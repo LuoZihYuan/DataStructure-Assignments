@@ -1,5 +1,5 @@
 #include "myString.hpp"
-/* Constructor & Destructor */
+/* Constructor */
 myString::myString() {
 	string = new char[0];
 }
@@ -8,6 +8,7 @@ myString::myString(const char *str) {
 	string = new char[len];
 	strcpy(string, str);
 }
+/* Destructor */
 myString::~myString() {
 	delete[] string;
 }
@@ -34,4 +35,17 @@ size_t myString::size() const noexcept {
 /* myString.length() */
 size_t myString::length() const noexcept {
 	return strlen(string);
+}
+/* myString.clear() */
+// XXX: Temporarily uses strcpy to empty string
+void myString::clear() noexcept {
+	if (strlen(string)) {
+		delete[] string;
+		string = new char[0];
+		strcpy(string, "");
+	}
+}
+/* myString.empty() */
+bool myString::empty() const noexcept {
+	return (strlen(string)) ? false: true;
 }

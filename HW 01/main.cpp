@@ -2,8 +2,8 @@
 #include "myString.hpp"
 using namespace std;
 int main(void) {
-	myString a;
-	cin >> a;
-	cout << a.length() << endl;
+	myString a = "123";
+	a.clear();
+	cout << a.size() << endl;
 	return 0;
 }
