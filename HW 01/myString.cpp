@@ -17,3 +17,7 @@ myString& myString::operator= (const char *str) {
 	strcpy(string, str);
 	return *this;
 }
+// override operator <<
+std::ostream& operator<<(std::ostream &output, const myString &str) {
+	return output << str.string;
+}
