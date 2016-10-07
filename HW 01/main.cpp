@@ -4,6 +4,6 @@ using namespace std;
 int main(void) {
 	myString a;
 	cin >> a;
-	cout << a << endl;
+	cout << a.length() << endl;
 	return 0;
 }

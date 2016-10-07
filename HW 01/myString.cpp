@@ -20,10 +20,18 @@ myString& myString::operator= (const char *str) {
 	return *this;
 }
 /* override operator << */
-std::ostream& operator<<(std::ostream &output, const myString &str) {
-	return output << str.string;
+std::ostream& operator<< (std::ostream &os, const myString &str) {
+	return os << str.string;
 }
 /* override operator >> */
-std::istream& operator>> (std::istream &input, myString &str) {
-	return input >> str.string;
+std::istream& operator>> (std::istream &is, myString &str) {
+	return is >> str.string;
+}
+/* myString.size() */
+size_t myString::size() const noexcept {
+	return strlen(string);
+}
+/* myString.length() */
+size_t myString::length() const noexcept {
+	return strlen(string);
 }
