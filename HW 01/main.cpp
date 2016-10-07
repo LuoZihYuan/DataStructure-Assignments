@@ -2,6 +2,7 @@
 #include "myString.hpp"
 using namespace std;
 int main(void) {
-	myString a = "123";
+	myString a;
+	a = "123";
 	return 0;
 }
