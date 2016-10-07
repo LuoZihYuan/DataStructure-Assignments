@@ -7,13 +7,15 @@ class myString {
 private:
 	char *string;
 public:
-	// Constructor & Destructor
+	/* Constructor & Destructor */
 	myString();
 	myString(const char*);
 	~myString();
-	// override operator =
+	/* override operator = */
 	myString& operator= (const char*);
-	// override operator <<
-	friend std::ostream& operator<<(std::ostream&, const myString&);
+	/* override operator << */
+	friend std::ostream& operator<< (std::ostream&, const myString&);
+	/* override operator >> */
+	friend std::istream& operator>> (std::istream&, myString&);
 };
 #endif
