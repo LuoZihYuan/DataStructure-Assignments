@@ -24,6 +24,14 @@ myString& myString::operator= (const char *str) {
 char& myString::operator[] (size_t pos) {
 	return string[pos];
 }
+/* override operator == */
+bool operator== (const myString &lhs, const myString &rhs) noexcept {
+	return (strcmp(lhs.string, rhs.string)) ? false: true;
+}
+/* override operator != */
+bool operator!= (const myString &lhs, const myString &rhs) noexcept {
+	return (strcmp(lhs.string, rhs.string)) ? true: false;
+}
 /* override operator << */
 std::ostream& operator<< (std::ostream &os, const myString &str) {
 	return os << str.string;

@@ -3,6 +3,9 @@
 using namespace std;
 int main(void) {
 	myString a = "123";
-	cout << a[2] << endl;
+	myString b = "123";
+	if(a==b) {
+		cout << "false" << endl;
+	}
 	return 0;
 }
