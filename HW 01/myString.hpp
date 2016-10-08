@@ -16,6 +16,8 @@ public:
 	myString& operator= (const char*);
 	/* override operator [] */
 	char& operator[] (size_t);
+	/* override operator + */
+	friend myString operator+ (const myString&, const myString&);
 	/* override operator == */
 	friend bool operator== (const myString&, const myString&) noexcept;
 	/* override operator != */

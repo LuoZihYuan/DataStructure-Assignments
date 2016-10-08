@@ -24,6 +24,18 @@ myString& myString::operator= (const char *str) {
 char& myString::operator[] (size_t pos) {
 	return string[pos];
 }
+/* override operator + */
+myString operator+ (const myString &lhs, const myString &rhs) {
+	int newLength;
+	char *buffer;
+	newLength = strlen(lhs.string) + strlen(rhs.string);
+	buffer = new char[newLength];
+	strcat(buffer, lhs.string);
+	strcat(buffer, rhs.string);
+	myString newString = buffer;
+	delete[] buffer;
+	return newString;
+}
 /* override operator == */
 bool operator== (const myString &lhs, const myString &rhs) noexcept {
 	return (strcmp(lhs.string, rhs.string)) ? false: true;
