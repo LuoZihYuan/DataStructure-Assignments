@@ -20,6 +20,10 @@ myString& myString::operator= (const char *str) {
 	strcpy(string, str);
 	return *this;
 }
+/* override operator [] */
+char& myString::operator[] (size_t pos) {
+	return string[pos];
+}
 /* override operator << */
 std::ostream& operator<< (std::ostream &os, const myString &str) {
 	return os << str.string;

@@ -14,6 +14,8 @@ public:
 	~myString();
 	/* override operator = */
 	myString& operator= (const char*);
+	/* override operator [] */
+	char& operator[] (size_t);
 	/* override operator << */
 	friend std::ostream& operator<< (std::ostream&, const myString&);
 	/* override operator >> */

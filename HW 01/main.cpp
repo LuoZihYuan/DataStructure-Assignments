@@ -3,7 +3,6 @@
 using namespace std;
 int main(void) {
 	myString a = "123";
-	a.clear();
-	cout << a.size() << endl;
+	cout << a[2] << endl;
 	return 0;
 }
