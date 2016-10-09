@@ -49,6 +49,12 @@ public:
 	void clear() noexcept;
 	/* myString.empty() */
 	bool empty() const noexcept;
+	/* myString.replace() */
+	myString& replace(size_t, size_t, const char*);
+	myString& replace(size_t, size_t, const char*, size_t);
+	myString& replace(size_t, size_t, size_t, char);
+	myString& replace(size_t, size_t, const myString&);
+	myString& replace(size_t, size_t, const myString&, size_t, size_t);
 	/* myString.find() */
 	size_t find(char, size_t pos = 0) const;
 	size_t find(const char*, size_t pos = 0) const;

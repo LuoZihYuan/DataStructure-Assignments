@@ -165,6 +165,76 @@ void myString::clear() noexcept {
 bool myString::empty() const noexcept {
 	return (strlen(string)) ? false: true;
 }
+/* myString.replace() */
+myString& myString::replace(size_t pos, size_t len, const char *s) {
+	if (pos > strlen(string)) {
+		throw std::out_of_range("char*");
+	}
+	size_t newLength = strlen(string) - len + strlen(s);
+	char *buffer = string;
+	string = new char[newLength];
+	strncpy(string, buffer, pos);
+	strcat(string, s);
+	strcat(string, buffer + pos + len);
+	delete[] buffer;
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, const char *s, size_t n) {
+	if (pos > strlen(string)) {
+		throw std::out_of_range("char*");
+	}
+	size_t newLength = strlen(string) - len + (strlen(s) * n);
+	char *buffer = string;
+	string = new char[newLength];
+	strncpy(string, buffer, pos);
+	for(int i = 0; i < n; i++) {
+		strcat(string, s);
+	}
+	strcat(string, buffer + pos + len);
+	delete[] buffer;
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, size_t n, char c) {
+	if (pos > strlen(string)) {
+		throw std::out_of_range("char*");
+	}
+	size_t newLength = strlen(string) - len + n;
+	char *buffer = string;
+	string = new char[newLength];
+	strncpy(string, buffer, pos);
+	for(int i = 0; i < n; i++) {
+		string[pos + i] = c;
+	}
+	strcat(string, buffer + pos + len);
+	delete[] buffer;
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, const myString &str) {
+	if (pos > strlen(string)) {
+		throw std::out_of_range("char*");
+	}
+	size_t newLength = strlen(string) - len + strlen(str.string);
+	char *buffer = string;
+	string = new char[newLength];
+	strncpy(string, buffer, pos);
+	strcat(string, str.string);
+	strcat(string, buffer + pos + len);
+	delete[] buffer;
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, const myString &str, size_t subpos, size_t sublen) {
+	if (pos > strlen(string) || subpos > strlen(str.string)) {
+		throw std::out_of_range("char*");
+	}
+	size_t newLength = strlen(string) - len + sublen;
+	char *buffer = string;
+	string = new char[newLength];
+	strncpy(string, buffer, pos);
+	strncat(string, str.string + subpos, sublen);
+	strcat(string, buffer + pos + len);
+	delete[] buffer;
+	return *this;
+}
 /* myString.find() */
 size_t myString::find(char c, size_t pos) const {
 	char *pch = strchr(string + pos, c);
