@@ -49,5 +49,9 @@ public:
 	void clear() noexcept;
 	/* myString.empty() */
 	bool empty() const noexcept;
+	/* myString.find() */
+	size_t find(char, size_t pos = 0) const;
+	size_t find(const char*, size_t pos = 0) const;
+	size_t find(const myString&, size_t pos = 0) const noexcept;
 };
 #endif

@@ -165,3 +165,16 @@ void myString::clear() noexcept {
 bool myString::empty() const noexcept {
 	return (strlen(string)) ? false: true;
 }
+/* myString.find() */
+size_t myString::find(char c, size_t pos) const {
+	char *pch = strchr(string + pos, c);
+	return (pch - string);
+}
+size_t myString::find(const char *s, size_t pos) const {
+	char *pch = strstr(string + pos, s);
+	return (pch - string);
+}
+size_t myString::find(const myString &str, size_t pos) const noexcept {
+	char *pch = strstr(string + pos, str.string);
+	return (pch - string);
+}
