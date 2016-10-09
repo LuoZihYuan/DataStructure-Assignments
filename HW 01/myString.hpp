@@ -13,12 +13,16 @@ public:
 	myString(const myString&);
 	/* Destructor */
 	~myString();
-	/* override operator = */
-	myString& operator= (char c);
-	myString& operator= (const char*);
-	myString& operator= (const myString&);
 	/* override operator [] */
 	char& operator[] (size_t);
+	/* override operator = */
+	myString& operator= (char);
+	myString& operator= (const char*);
+	myString& operator= (const myString&);
+	/* override operator += */
+	myString& operator+= (char);
+	myString& operator+= (const char*);
+	myString& operator+= (const myString&);
 	/* override operator + */
 	friend myString operator+ (const myString&, char);
 	friend myString operator+ (char, const myString&);

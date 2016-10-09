@@ -17,6 +17,10 @@ myString::myString(const myString &str) {
 myString::~myString() {
 	delete[] string;
 }
+/* override operator [] */
+char& myString::operator[] (size_t pos) {
+	return string[pos];
+}
 /* override operator = */
 myString& myString::operator= (char c) {
 	delete[] string;
@@ -38,9 +42,33 @@ myString& myString::operator= (const myString &str) {
 	strcpy(string, str.string);
 	return *this;
 }
-/* override operator [] */
-char& myString::operator[] (size_t pos) {
-	return string[pos];
+/* override operator += */
+myString& myString::operator+= (char c) {
+	int newLength = strlen(string) + 1;
+	char *buffer = string;
+	string = new char[newLength];
+	strcat(string, buffer);
+	string[newLength - 1] = c;
+	delete[] buffer;
+	return *this;
+}
+myString& myString::operator+= (const char *s) {
+	int newLength = strlen(string) + strlen(s);
+	char *buffer = string;
+	string = new char[newLength];
+	strcat(string, buffer);
+	strcat(string, s);
+	delete[] buffer;
+	return *this;
+}
+myString& myString::operator+= (const myString &str) {
+	int newLength = strlen(string) + strlen(str.string);
+	char *buffer = string;
+	string = new char[newLength];
+	strcat(string, buffer);
+	strcat(string, str.string);
+	delete[] buffer;
+	return *this;
 }
 /* override operator + */
 myString operator+ (const myString &lhs, char rhs) {
