@@ -44,7 +44,7 @@ myString& myString::operator= (const myString &str) {
 }
 /* override operator += */
 myString& myString::operator+= (char c) {
-	int newLength = strlen(string) + 1;
+	size_t newLength = strlen(string) + 1;
 	char *buffer = string;
 	string = new char[newLength];
 	strcat(string, buffer);
@@ -53,7 +53,7 @@ myString& myString::operator+= (char c) {
 	return *this;
 }
 myString& myString::operator+= (const char *s) {
-	int newLength = strlen(string) + strlen(s);
+	size_t newLength = strlen(string) + strlen(s);
 	char *buffer = string;
 	string = new char[newLength];
 	strcat(string, buffer);
@@ -62,7 +62,7 @@ myString& myString::operator+= (const char *s) {
 	return *this;
 }
 myString& myString::operator+= (const myString &str) {
-	int newLength = strlen(string) + strlen(str.string);
+	size_t newLength = strlen(string) + strlen(str.string);
 	char *buffer = string;
 	string = new char[newLength];
 	strcat(string, buffer);
@@ -72,7 +72,7 @@ myString& myString::operator+= (const myString &str) {
 }
 /* override operator + */
 myString operator+ (const myString &lhs, char rhs) {
-	int newLength = strlen(lhs.string) + 1;
+	size_t newLength = strlen(lhs.string) + 1;
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
 	buffer[newLength - 1] = rhs;
@@ -81,7 +81,7 @@ myString operator+ (const myString &lhs, char rhs) {
 	return newString;
 }
 myString operator+ (char lhs, const myString &rhs) {
-	int newLength = strlen(rhs.string) + 1;
+	size_t newLength = strlen(rhs.string) + 1;
 	char *buffer = new char[newLength];
 	buffer[0] = lhs;
 	strcat(buffer, rhs.string);
@@ -90,10 +90,8 @@ myString operator+ (char lhs, const myString &rhs) {
 	return newString;
 }
 myString operator+ (const myString &lhs, const char *rhs) {
-	int newLength;
-	char *buffer;
-	newLength = strlen(lhs.string) + strlen(rhs);
-	buffer = new char[newLength];
+	size_t newLength = strlen(lhs.string) + strlen(rhs);
+	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
 	strcat(buffer, rhs);
 	myString newString = buffer;
@@ -101,10 +99,8 @@ myString operator+ (const myString &lhs, const char *rhs) {
 	return newString;
 }
 myString operator+ (const char *lhs, const myString &rhs) {
-	int newLength;
-	char *buffer;
-	newLength = strlen(lhs) + strlen(rhs.string);
-	buffer = new char[newLength];
+	size_t newLength = strlen(lhs) + strlen(rhs.string);
+	char *buffer = new char[newLength];
 	strcat(buffer, lhs);
 	strcat(buffer, rhs.string);
 	myString newString = buffer;
@@ -112,10 +108,8 @@ myString operator+ (const char *lhs, const myString &rhs) {
 	return newString;
 }
 myString operator+ (const myString &lhs, const myString &rhs) {
-	int newLength;
-	char *buffer;
-	newLength = strlen(lhs.string) + strlen(rhs.string);
-	buffer = new char[newLength];
+	size_t newLength = strlen(lhs.string) + strlen(rhs.string);
+	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
 	strcat(buffer, rhs.string);
 	myString newString = buffer;
