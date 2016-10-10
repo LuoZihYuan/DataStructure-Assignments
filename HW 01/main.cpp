@@ -1,9 +1,10 @@
 #include <iostream>
-#include "myString.hpp"
-#include <string>
+#include "baseString.hpp"
 using namespace std;
 int main(void) {
-	string a = "111";
-	cout << a.replace(-1, 1, "23", 5) << endl;
+	baseString a = "123";
+	a = "456";
+	a += "789";
+	cout << a << endl;
 	return 0;
 }

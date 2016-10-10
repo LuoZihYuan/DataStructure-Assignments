@@ -1,41 +1,41 @@
-#include "myString.hpp"
+#include "baseString.hpp"
 /* Constructor */
-myString::myString() {
+baseString::baseString() {
 	string = new char[0];
 }
-myString::myString(const char *s) {
+baseString::baseString(const char *s) {
 	size_t len = strlen(s);
 	string = new char[len];
 	strcpy(string, s);
 }
-myString::myString(const myString &str) {
+baseString::baseString(const baseString &str) {
 	size_t len = strlen(str.string);
 	string = new char[len];
 	strcpy(string, str.string);
 }
 /* Destructor */
-myString::~myString() {
+baseString::~baseString() {
 	delete[] string;
 }
 /* override operator [] */
-char& myString::operator[] (size_t pos) {
+char& baseString::operator[] (size_t pos) {
 	return string[pos];
 }
 /* override operator = */
-myString& myString::operator= (char c) {
+baseString& baseString::operator= (char c) {
 	delete[] string;
 	string = new char;
 	string[0] = c;
 	return *this;
 }
-myString& myString::operator= (const char *str) {
+baseString& baseString::operator= (const char *str) {
 	delete[] string;
 	size_t len = strlen(str);
 	string = new char[len];
 	strcpy(string, str);
 	return *this;
 }
-myString& myString::operator= (const myString &str) {
+baseString& baseString::operator= (const baseString &str) {
 	delete[] string;
 	size_t len = strlen(str.string);
 	string = new char[len];
@@ -43,7 +43,7 @@ myString& myString::operator= (const myString &str) {
 	return *this;
 }
 /* override operator += */
-myString& myString::operator+= (char c) {
+baseString& baseString::operator+= (char c) {
 	size_t newLength = strlen(string) + 1;
 	char *buffer = string;
 	string = new char[newLength];
@@ -52,7 +52,7 @@ myString& myString::operator+= (char c) {
 	delete[] buffer;
 	return *this;
 }
-myString& myString::operator+= (const char *s) {
+baseString& baseString::operator+= (const char *s) {
 	size_t newLength = strlen(string) + strlen(s);
 	char *buffer = string;
 	string = new char[newLength];
@@ -61,7 +61,7 @@ myString& myString::operator+= (const char *s) {
 	delete[] buffer;
 	return *this;
 }
-myString& myString::operator+= (const myString &str) {
+baseString& baseString::operator+= (const baseString &str) {
 	size_t newLength = strlen(string) + strlen(str.string);
 	char *buffer = string;
 	string = new char[newLength];
@@ -71,102 +71,102 @@ myString& myString::operator+= (const myString &str) {
 	return *this;
 }
 /* override operator + */
-myString operator+ (const myString &lhs, char rhs) {
+baseString operator+ (const baseString &lhs, char rhs) {
 	size_t newLength = strlen(lhs.string) + 1;
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
 	buffer[newLength - 1] = rhs;
-	myString newString = buffer;
+	baseString newString = buffer;
 	delete[] buffer;
 	return newString;
 }
-myString operator+ (char lhs, const myString &rhs) {
+baseString operator+ (char lhs, const baseString &rhs) {
 	size_t newLength = strlen(rhs.string) + 1;
 	char *buffer = new char[newLength];
 	buffer[0] = lhs;
 	strcat(buffer, rhs.string);
-	myString newString = buffer;
+	baseString newString = buffer;
 	delete[] buffer;
 	return newString;
 }
-myString operator+ (const myString &lhs, const char *rhs) {
+baseString operator+ (const baseString &lhs, const char *rhs) {
 	size_t newLength = strlen(lhs.string) + strlen(rhs);
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
 	strcat(buffer, rhs);
-	myString newString = buffer;
+	baseString newString = buffer;
 	delete[] buffer;
 	return newString;
 }
-myString operator+ (const char *lhs, const myString &rhs) {
+baseString operator+ (const char *lhs, const baseString &rhs) {
 	size_t newLength = strlen(lhs) + strlen(rhs.string);
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs);
 	strcat(buffer, rhs.string);
-	myString newString = buffer;
+	baseString newString = buffer;
 	delete[] buffer;
 	return newString;
 }
-myString operator+ (const myString &lhs, const myString &rhs) {
+baseString operator+ (const baseString &lhs, const baseString &rhs) {
 	size_t newLength = strlen(lhs.string) + strlen(rhs.string);
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
 	strcat(buffer, rhs.string);
-	myString newString = buffer;
+	baseString newString = buffer;
 	delete[] buffer;
 	return newString;
 }
 /* override operator == */
-bool operator== (const myString &lhs, const char *rhs) {
+bool operator== (const baseString &lhs, const char *rhs) {
 	return (strcmp(lhs.string, rhs)) ? false: true;
 }
-bool operator== (const char *lhs, const myString &rhs) {
+bool operator== (const char *lhs, const baseString &rhs) {
 	return (strcmp(lhs, rhs.string)) ? false: true;
 }
-bool operator== (const myString &lhs, const myString &rhs) noexcept {
+bool operator== (const baseString &lhs, const baseString &rhs) noexcept {
 	return (strcmp(lhs.string, rhs.string)) ? false: true;
 }
 /* override operator != */
-bool operator!= (const myString &lhs, const char *rhs) {
+bool operator!= (const baseString &lhs, const char *rhs) {
 	return (strcmp(lhs.string, rhs)) ? true: false;
 }
-bool operator!= (const char *lhs, const myString &rhs) {
+bool operator!= (const char *lhs, const baseString &rhs) {
 	return (strcmp(lhs, rhs.string)) ? true: false;
 }
-bool operator!= (const myString &lhs, const myString &rhs) noexcept {
+bool operator!= (const baseString &lhs, const baseString &rhs) noexcept {
 	return (strcmp(lhs.string, rhs.string)) ? true: false;
 }
 /* override operator << */
-std::ostream& operator<< (std::ostream &os, const myString &str) {
+std::ostream& operator<< (std::ostream &os, const baseString &str) {
 	return os << str.string;
 }
 /* override operator >> */
-std::istream& operator>> (std::istream &is, myString &str) {
+std::istream& operator>> (std::istream &is, baseString &str) {
 	return is >> str.string;
 }
-/* myString.size() */
-size_t myString::size() const noexcept {
+/* baseString.size() */
+size_t baseString::size() const noexcept {
 	return strlen(string);
 }
-/* myString.length() */
-size_t myString::length() const noexcept {
+/* baseString.length() */
+size_t baseString::length() const noexcept {
 	return strlen(string);
 }
-/* myString.clear() */
+/* baseString.clear() */
 // XXX: Temporarily uses strcpy to empty string
-void myString::clear() noexcept {
+void baseString::clear() noexcept {
 	if (strlen(string)) {
 		delete[] string;
 		string = new char[0];
 		strcpy(string, "");
 	}
 }
-/* myString.empty() */
-bool myString::empty() const noexcept {
+/* baseString.empty() */
+bool baseString::empty() const noexcept {
 	return (strlen(string)) ? false: true;
 }
-/* myString.replace() */
-myString& myString::replace(size_t pos, size_t len, const char *s) {
+/* baseString.replace() */
+baseString& baseString::replace(size_t pos, size_t len, const char *s) {
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	}
@@ -179,7 +179,7 @@ myString& myString::replace(size_t pos, size_t len, const char *s) {
 	delete[] buffer;
 	return *this;
 }
-myString& myString::replace(size_t pos, size_t len, const char *s, size_t n) {
+baseString& baseString::replace(size_t pos, size_t len, const char *s, size_t n) {
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	}
@@ -194,7 +194,7 @@ myString& myString::replace(size_t pos, size_t len, const char *s, size_t n) {
 	delete[] buffer;
 	return *this;
 }
-myString& myString::replace(size_t pos, size_t len, size_t n, char c) {
+baseString& baseString::replace(size_t pos, size_t len, size_t n, char c) {
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	}
@@ -209,7 +209,7 @@ myString& myString::replace(size_t pos, size_t len, size_t n, char c) {
 	delete[] buffer;
 	return *this;
 }
-myString& myString::replace(size_t pos, size_t len, const myString &str) {
+baseString& baseString::replace(size_t pos, size_t len, const baseString &str) {
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	}
@@ -222,7 +222,7 @@ myString& myString::replace(size_t pos, size_t len, const myString &str) {
 	delete[] buffer;
 	return *this;
 }
-myString& myString::replace(size_t pos, size_t len, const myString &str, size_t subpos, size_t sublen) {
+baseString& baseString::replace(size_t pos, size_t len, const baseString &str, size_t subpos, size_t sublen) {
 	if (pos > strlen(string) || subpos > strlen(str.string)) {
 		throw std::out_of_range("char*");
 	}
@@ -235,16 +235,16 @@ myString& myString::replace(size_t pos, size_t len, const myString &str, size_t 
 	delete[] buffer;
 	return *this;
 }
-/* myString.find() */
-size_t myString::find(char c, size_t pos) const {
+/* baseString.find() */
+size_t baseString::find(char c, size_t pos) const {
 	char *pch = strchr(string + pos, c);
 	return (pch - string);
 }
-size_t myString::find(const char *s, size_t pos) const {
+size_t baseString::find(const char *s, size_t pos) const {
 	char *pch = strstr(string + pos, s);
 	return (pch - string);
 }
-size_t myString::find(const myString &str, size_t pos) const noexcept {
+size_t baseString::find(const baseString &str, size_t pos) const noexcept {
 	char *pch = strstr(string + pos, str.string);
 	return (pch - string);
 }
