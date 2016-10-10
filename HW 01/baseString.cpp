@@ -182,6 +182,8 @@ baseString& baseString::replace(size_t pos, size_t len, const char *s) {
 baseString& baseString::replace(size_t pos, size_t len, const char *s, size_t n) {
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
+	} else if ((int)n < 0) {
+		throw std::length_error("char*");
 	}
 	size_t newLength = strlen(string) - len + (strlen(s) * n);
 	char *buffer = string;
@@ -197,12 +199,14 @@ baseString& baseString::replace(size_t pos, size_t len, const char *s, size_t n)
 baseString& baseString::replace(size_t pos, size_t len, size_t n, char c) {
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
+	} else if ((int)n < 0) {
+		throw std::length_error("char*");
 	}
 	size_t newLength = strlen(string) - len + n;
 	char *buffer = string;
 	string = new char[newLength];
 	strncpy(string, buffer, pos);
-	for(int i = 0; i < n; i++) {
+	for(size_t i = 0; i < n; i++) {
 		string[pos + i] = c;
 	}
 	strcat(string, buffer + pos + len);
