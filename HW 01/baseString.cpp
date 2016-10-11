@@ -3,6 +3,10 @@
 baseString::baseString() {
 	string = new char[0];
 }
+baseString::baseString(char c) {
+	string = new char;
+	string[0] = c;
+}
 baseString::baseString(const char *s) {
 	size_t len = strlen(s);
 	string = new char[len];

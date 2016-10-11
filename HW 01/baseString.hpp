@@ -9,6 +9,7 @@ protected:
 public:
 	/* Constructor */
 	baseString();
+	baseString(char);
 	baseString(const char*);
 	baseString(const baseString&);
 	/* Destructor */
