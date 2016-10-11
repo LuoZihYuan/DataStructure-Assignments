@@ -3,11 +3,14 @@
 
 #include <string.h>
 #include <iostream>
+#include "baseString.hpp"
 typedef struct OCCUR{
 	int count = 0;
 	int *loc = NULL;
 } occur;
-#include "baseString.hpp"
+/* override operator << */
+std::ostream& operator<< (std::ostream&, const occur&);
+
 class myDirtyString : public baseString {
 	using baseString::baseString;
 public:

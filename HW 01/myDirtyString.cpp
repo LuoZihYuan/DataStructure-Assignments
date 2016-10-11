@@ -1,4 +1,20 @@
 #include "myDirtyString.hpp"
+/* override operator << */
+std::ostream& operator<< (std::ostream &os, const occur &status) {
+	os << status.count;
+	os << " - (";
+	if(status.count) {
+		for(int i = 0; i < status.count; i++) {
+			os << status.loc[i];
+			if(i != status.count - 1) {
+				os << ", ";
+			}
+		}
+	}
+	os << ")";
+	return os;
+}
+
 /* myDirtyString.freq() */
 occur myDirtyString::freq(char c) {
 	occur status;
