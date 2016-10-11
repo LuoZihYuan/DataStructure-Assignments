@@ -1,18 +1,18 @@
 #include "baseString.hpp"
 /* Constructor */
-baseString::baseString() {
+baseString::baseString() { // FIXME: missing '\0' at end of char array
 	string = new char[0];
 }
-baseString::baseString(char c) {
+baseString::baseString(char c) { // FIXME: missing '\0' at end of char array
 	string = new char;
 	string[0] = c;
 }
-baseString::baseString(const char *s) {
+baseString::baseString(const char *s) { // FIXME: missing '\0' at end of char array
 	size_t len = strlen(s);
 	string = new char[len];
 	strcpy(string, s);
 }
-baseString::baseString(const baseString &str) {
+baseString::baseString(const baseString &str) { // FIXME: missing '\0' at end of char array
 	size_t len = strlen(str.string);
 	string = new char[len];
 	strcpy(string, str.string);
@@ -26,20 +26,20 @@ char& baseString::operator[] (size_t pos) {
 	return string[pos];
 }
 /* override operator = */
-baseString& baseString::operator= (char c) {
+baseString& baseString::operator= (char c) { // FIXME: missing '\0' at end of char array
 	delete[] string;
 	string = new char;
 	string[0] = c;
 	return *this;
 }
-baseString& baseString::operator= (const char *str) {
+baseString& baseString::operator= (const char *str) { // FIXME: missing '\0' at end of char array
 	delete[] string;
 	size_t len = strlen(str);
 	string = new char[len];
 	strcpy(string, str);
 	return *this;
 }
-baseString& baseString::operator= (const baseString &str) {
+baseString& baseString::operator= (const baseString &str) { // FIXME: missing '\0' at end of char array
 	delete[] string;
 	size_t len = strlen(str.string);
 	string = new char[len];
@@ -47,7 +47,7 @@ baseString& baseString::operator= (const baseString &str) {
 	return *this;
 }
 /* override operator += */
-baseString& baseString::operator+= (char c) {
+baseString& baseString::operator+= (char c) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(string) + 1;
 	char *buffer = string;
 	string = new char[newLength];
@@ -56,7 +56,7 @@ baseString& baseString::operator+= (char c) {
 	delete[] buffer;
 	return *this;
 }
-baseString& baseString::operator+= (const char *s) {
+baseString& baseString::operator+= (const char *s) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(string) + strlen(s);
 	char *buffer = string;
 	string = new char[newLength];
@@ -65,7 +65,7 @@ baseString& baseString::operator+= (const char *s) {
 	delete[] buffer;
 	return *this;
 }
-baseString& baseString::operator+= (const baseString &str) {
+baseString& baseString::operator+= (const baseString &str) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(string) + strlen(str.string);
 	char *buffer = string;
 	string = new char[newLength];
@@ -75,7 +75,7 @@ baseString& baseString::operator+= (const baseString &str) {
 	return *this;
 }
 /* override operator + */
-baseString operator+ (const baseString &lhs, char rhs) {
+baseString operator+ (const baseString &lhs, char rhs) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(lhs.string) + 1;
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
@@ -84,7 +84,7 @@ baseString operator+ (const baseString &lhs, char rhs) {
 	delete[] buffer;
 	return newString;
 }
-baseString operator+ (char lhs, const baseString &rhs) {
+baseString operator+ (char lhs, const baseString &rhs) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(rhs.string) + 1;
 	char *buffer = new char[newLength];
 	buffer[0] = lhs;
@@ -93,7 +93,7 @@ baseString operator+ (char lhs, const baseString &rhs) {
 	delete[] buffer;
 	return newString;
 }
-baseString operator+ (const baseString &lhs, const char *rhs) {
+baseString operator+ (const baseString &lhs, const char *rhs) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(lhs.string) + strlen(rhs);
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
@@ -102,7 +102,7 @@ baseString operator+ (const baseString &lhs, const char *rhs) {
 	delete[] buffer;
 	return newString;
 }
-baseString operator+ (const char *lhs, const baseString &rhs) {
+baseString operator+ (const char *lhs, const baseString &rhs) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(lhs) + strlen(rhs.string);
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs);
@@ -111,7 +111,7 @@ baseString operator+ (const char *lhs, const baseString &rhs) {
 	delete[] buffer;
 	return newString;
 }
-baseString operator+ (const baseString &lhs, const baseString &rhs) {
+baseString operator+ (const baseString &lhs, const baseString &rhs) { // FIXME: missing '\0' at end of char array
 	size_t newLength = strlen(lhs.string) + strlen(rhs.string);
 	char *buffer = new char[newLength];
 	strcat(buffer, lhs.string);
@@ -158,7 +158,7 @@ size_t baseString::length() const noexcept {
 }
 /* baseString.clear() */
 // XXX: Temporarily uses strcpy to empty string
-void baseString::clear() noexcept {
+void baseString::clear() noexcept { // FIXME: missing '\0' at end of char array
 	if (strlen(string)) {
 		delete[] string;
 		string = new char[0];
@@ -170,7 +170,7 @@ bool baseString::empty() const noexcept {
 	return (strlen(string)) ? false: true;
 }
 /* baseString.replace() */
-baseString& baseString::replace(size_t pos, size_t len, const char *s) {
+baseString& baseString::replace(size_t pos, size_t len, const char *s) { // FIXME: missing '\0' at end of char array
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	}
@@ -183,7 +183,7 @@ baseString& baseString::replace(size_t pos, size_t len, const char *s) {
 	delete[] buffer;
 	return *this;
 }
-baseString& baseString::replace(size_t pos, size_t len, const char *s, size_t n) {
+baseString& baseString::replace(size_t pos, size_t len, const char *s, size_t n) { // FIXME: missing '\0' at end of char array
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	} else if ((int)n < 0) {
@@ -200,7 +200,7 @@ baseString& baseString::replace(size_t pos, size_t len, const char *s, size_t n)
 	delete[] buffer;
 	return *this;
 }
-baseString& baseString::replace(size_t pos, size_t len, size_t n, char c) {
+baseString& baseString::replace(size_t pos, size_t len, size_t n, char c) { // FIXME: missing '\0' at end of char array
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	} else if ((int)n < 0) {
@@ -217,7 +217,7 @@ baseString& baseString::replace(size_t pos, size_t len, size_t n, char c) {
 	delete[] buffer;
 	return *this;
 }
-baseString& baseString::replace(size_t pos, size_t len, const baseString &str) {
+baseString& baseString::replace(size_t pos, size_t len, const baseString &str) { // FIXME: missing '\0' at end of char array
 	if (pos > strlen(string)) {
 		throw std::out_of_range("char*");
 	}
@@ -230,7 +230,7 @@ baseString& baseString::replace(size_t pos, size_t len, const baseString &str) {
 	delete[] buffer;
 	return *this;
 }
-baseString& baseString::replace(size_t pos, size_t len, const baseString &str, size_t subpos, size_t sublen) {
+baseString& baseString::replace(size_t pos, size_t len, const baseString &str, size_t subpos, size_t sublen) { // FIXME: missing '\0' at end of char array
 	if (pos > strlen(string) || subpos > strlen(str.string)) {
 		throw std::out_of_range("char*");
 	}
