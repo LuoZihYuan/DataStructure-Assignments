@@ -1,9 +1,11 @@
 #ifndef MYDIRTYSTRING_H
 #define MYDIRTYSTRING_H
 
+#include <string.h>
+#include <iostream>
 typedef struct OCCUR{
-	int num;
-	int *loc;
+	int count = 0;
+	int *loc = NULL;
 } occur;
 #include "baseString.hpp"
 class myDirtyString : public baseString {

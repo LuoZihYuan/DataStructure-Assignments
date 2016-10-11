@@ -4,7 +4,7 @@
 #include <string.h>
 #include <iostream>
 class baseString {
-private:
+protected:
 	char *string;
 public:
 	/* Constructor */
