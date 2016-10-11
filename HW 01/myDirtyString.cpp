@@ -18,10 +18,11 @@ occur myDirtyString::freq(char c) {
 	occur status;
 	char *pch = strchr(string, c);
 	while(pch != NULL) {
-		status.count += 1;
 		int *buffer = status.loc;
+		int bufferSize = sizeof(int) * status.count;
+		status.count += 1;
 		status.loc = new int[status.count];
-		memcpy(status.loc, buffer, status.count - 1);
+		memcpy(status.loc, buffer, bufferSize);
 		status.loc[status.count - 1] = (pch - string);
 		delete[] buffer;
 		pch = strchr(pch + 1, c);
@@ -32,10 +33,11 @@ occur myDirtyString::freq(const char *s) {
 	occur status;
 	char *pch = strstr(string, s);
 	while(pch != NULL) {
-		status.count += 1;
 		int *buffer = status.loc;
+		int bufferSize = sizeof(int) * status.count;
+		status.count += 1;
 		status.loc = new int[status.count];
-		memcpy(status.loc, buffer, status.count - 1);
+		memcpy(status.loc, buffer, bufferSize);
 		status.loc[status.count - 1] = (pch - string);
 		delete[] buffer;
 		pch = strstr(pch + 1, s);
@@ -46,10 +48,11 @@ occur myDirtyString::freq(const myDirtyString &str) {
 	occur status;
 	char *pch = strstr(string, str.string);
 	while(pch != NULL) {
-		status.count += 1;
 		int *buffer = status.loc;
+		int bufferSize = sizeof(int) * status.count;
+		status.count += 1;
 		status.loc = new int[status.count];
-		memcpy(status.loc, buffer, status.count - 1);
+		memcpy(status.loc, buffer, bufferSize);
 		status.loc[status.count - 1] = (pch - string);
 		delete[] buffer;
 		pch = strstr(pch + 1, str.string);

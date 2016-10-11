@@ -5,7 +5,7 @@
 #include <iostream>
 class baseString {
 protected:
-	char *string;
+	char *string = NULL;
 public:
 	/* Constructor */
 	baseString();
