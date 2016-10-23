@@ -1,8 +1,7 @@
 #include "myDirtyString.hpp"
 /* override operator << */
 std::ostream& operator<< (std::ostream &os, const occur &status) {
-	os << status.count;
-	os << " - (";
+	os << status.count << " - (";
 	if(status.count)
 		for(int i = 0; i < status.count; i++) {
 			os << status.loc[i];
@@ -60,15 +59,26 @@ occur myDirtyString::freq(const myDirtyString &str) {
 	return status;
 }
 /* myDirtyString.del() */
-// myDirtyString& myDirtyString::del(char c) {
-// 	return *this;
-// }
-// myDirtyString& myDirtyString::del(const char *s) {
-// 	return *this;
-// }
-// myDirtyString& myDirtyString::del(const myDirtyString &str) {
-// 	return *this;
-// }
+myDirtyString& myDirtyString::del(char c) {
+	char *pch = strchr(string, c);
+	while(pch != NULL) {
+		int newLength = strlen(string);
+		char *buffer = string;
+		string = new char[newLength];
+		std::cout << buffer << std::endl;
+		strncpy(string, buffer, pch - buffer);
+		strcat(string, pch + 1);
+		delete[] buffer;
+		pch = strchr(string, c);
+	}
+	return *this;
+}
+myDirtyString& myDirtyString::del(const char *s) {
+	return *this;
+}
+myDirtyString& myDirtyString::del(const myDirtyString &str) {
+	return *this;
+}
 /* del() */
 // myDirtyString del(const myDirtyString &lhs, char rhs) {
 
