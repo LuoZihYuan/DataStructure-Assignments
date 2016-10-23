@@ -20,3 +20,7 @@ myString::myString(const myString &str) {
 myString::~myString() {
 	string.clear();
 }
+/* overload operator [] */
+char& myString::operator[] (size_t pos) {
+	return string[pos];
+}

@@ -16,11 +16,13 @@ private:
 public:
 	/* Constructor */
 	myString();
-	myString(char c);
-	myString(const char *s);
-	myString(const myString &str);
+	myString(char);
+	myString(const char*);
+	myString(const myString&);
 	/* Destructor */
 	~myString();
+	/* overload operator [] */
+	char& operator[] (size_t);
 };
 
 #endif
