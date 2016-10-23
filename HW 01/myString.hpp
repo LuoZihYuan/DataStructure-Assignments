@@ -49,6 +49,10 @@ public:
 	friend std::ostream& operator<< (std::ostream&, const myString&);
 	/* overload operator >> */
 	friend std::istream& operator>> (std::istream&, myString&);
+	/* myString.size() */
+	size_t size() const noexcept;
+	/* myString.length() */
+	size_t length() const noexcept;
 };
 
 #endif

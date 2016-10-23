@@ -142,3 +142,11 @@ std::istream& operator>> (std::istream &is, myString &str) {
 	}
 	return is;
 }
+/* myString.size() */
+size_t myString::size() const noexcept {
+	return string.size();
+}
+/* myString.length() */
+size_t myString::length() const noexcept {
+	return string.size();
+}
