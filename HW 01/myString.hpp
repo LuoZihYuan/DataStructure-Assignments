@@ -47,6 +47,8 @@ public:
 	friend bool operator!= (const myString&, const myString&) noexcept;
 	/* overload operator << */
 	friend std::ostream& operator<< (std::ostream&, const myString&);
+	/* overload operator >> */
+	friend std::istream& operator>> (std::istream&, myString&);
 };
 
 #endif

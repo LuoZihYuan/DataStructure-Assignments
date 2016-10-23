@@ -132,3 +132,13 @@ std::ostream& operator<< (std::ostream &os, const myString &str) {
 	}
 	return os;
 }
+/* overload operator >> */
+std::istream& operator>> (std::istream &is, myString &str) {
+	char c;
+	is.get(c);
+	while(c != ' ' && c != '\n') {
+		str.string.push_back(c);
+		is.get(c);
+	}
+	return is;
+}
