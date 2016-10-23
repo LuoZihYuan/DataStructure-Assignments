@@ -19,6 +19,8 @@ public:
 	myString(char c);
 	myString(const char *s);
 	myString(const myString &str);
+	/* Destructor */
+	~myString();
 };
 
 #endif

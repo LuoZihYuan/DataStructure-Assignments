@@ -16,3 +16,7 @@ myString::myString(const myString &str) {
 		string.push_back(c);
 	}
 }
+/* Destructor */
+myString::~myString() {
+	string.clear();
+}
