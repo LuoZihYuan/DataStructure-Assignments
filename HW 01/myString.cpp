@@ -86,7 +86,7 @@ myString operator+ (const myString &lhs, const myString &rhs) {
 	newString += rhs;
 	return newString;
 }
-/* override operator == */
+/* overload operator == */
 bool operator== (const myString &lhs, const char *rhs) {
 	int i = 0;
 	while(rhs[i++] != '\0') {
@@ -114,4 +114,14 @@ bool operator== (const myString &lhs, const myString &rhs) noexcept {
 		}
 	}
 	return true;
+}
+/* overload operator != */
+bool operator!= (const myString &lhs, const char *rhs) {
+	return !(lhs == rhs);
+}
+bool operator!= (const char *lhs, const myString &rhs) {
+	return !(lhs == rhs);
+}
+bool operator!= (const myString &lhs, const myString &rhs) noexcept {
+	return !(lhs == rhs);
 }

@@ -37,10 +37,15 @@ public:
 	friend myString operator+ (const myString&, const char*);
 	friend myString operator+ (const char*, const myString&);
 	friend myString operator+ (const myString&, const myString&);
-	/* override operator == */
+	/* overload operator == */
 	friend bool operator== (const myString&, const char*);
 	friend bool operator== (const char*, const myString&);
 	friend bool operator== (const myString&, const myString&) noexcept;
+	/* overload operator != */
+	friend bool operator!= (const myString&, const char*);
+	friend bool operator!= (const char*, const myString&);
+	friend bool operator!= (const myString&, const myString&) noexcept;
+
 };
 
 #endif
