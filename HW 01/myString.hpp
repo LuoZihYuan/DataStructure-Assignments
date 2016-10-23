@@ -27,6 +27,10 @@ public:
 	myString& operator= (char);
 	myString& operator= (const char*);
 	myString& operator= (const myString&);
+	/* overload operator += */
+	myString& operator+= (char);
+	myString& operator+= (const char*);
+	myString& operator+= (const myString&);
 };
 
 #endif

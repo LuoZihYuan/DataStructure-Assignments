@@ -42,3 +42,21 @@ myString& myString::operator= (const myString &str) {
 	string = str.string;
 	return *this;
 }
+/* overload operator += */
+myString& myString::operator+= (char c) {
+	string.push_back(c);
+	return *this;
+}
+myString& myString::operator+= (const char *s) {
+	int i = 0;
+	while(s[i++] != '\0') {
+		string.push_back(s[i-1]);
+	}
+	return *this;
+}
+myString& myString::operator+= (const myString &str) {
+	for(char c: str.string) {
+		string.push_back(c);
+	}
+	return *this;
+}
