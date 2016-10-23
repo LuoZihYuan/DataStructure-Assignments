@@ -60,3 +60,58 @@ myString& myString::operator+= (const myString &str) {
 	}
 	return *this;
 }
+/* overload operator + */
+myString operator+ (const myString &lhs, char rhs) {
+	myString newString = lhs;
+	newString += rhs;
+	return newString;
+}
+myString operator+ (char lhs, const myString &rhs) {
+	myString newString = lhs;
+	newString += rhs;
+	return newString;
+}
+myString operator+ (const myString &lhs, const char *rhs) {
+	myString newString = lhs;
+	newString += rhs;
+	return newString;
+}
+myString operator+ (const char *lhs, const myString &rhs) {
+	myString newString = lhs;
+	newString += rhs;
+	return newString;
+}
+myString operator+ (const myString &lhs, const myString &rhs) {
+	myString newString = lhs;
+	newString += rhs;
+	return newString;
+}
+/* override operator == */
+bool operator== (const myString &lhs, const char *rhs) {
+	int i = 0;
+	while(rhs[i++] != '\0') {
+		if(lhs.string[i-1] != rhs[i-1])
+			return false;
+	}
+	return true;
+}
+bool operator== (const char *lhs, const myString &rhs) {
+	int i = 0;
+	while(lhs[i++] != '\0') {
+		if(lhs[i-1] != rhs.string[i-1])
+			return false;
+	}
+	return true;
+}
+bool operator== (const myString &lhs, const myString &rhs) noexcept {
+	if(lhs.string.size() != rhs.string.size()) {
+		return false;
+	} else {
+		int i = 0, length = lhs.string.size();
+		while(i++ != length) {
+			if(lhs.string[i-1] != rhs.string[i-1])
+				return false;
+		}
+	}
+	return true;
+}
