@@ -24,3 +24,21 @@ myString::~myString() {
 char& myString::operator[] (size_t pos) {
 	return string[pos];
 }
+/* overload operator = */
+myString& myString::operator= (char c) {
+	string.clear();
+	string.push_back(c);
+	return *this;
+}
+myString& myString::operator= (const char *s) {
+	string.clear();
+	int i = 0;
+	while(s[i++] != '\0') {
+		string.push_back(s[i-1]);
+	}
+	return *this;
+}
+myString& myString::operator= (const myString &str) {
+	string = str.string;
+	return *this;
+}

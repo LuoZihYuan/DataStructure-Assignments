@@ -23,6 +23,10 @@ public:
 	~myString();
 	/* overload operator [] */
 	char& operator[] (size_t);
+	/* overload operator = */
+	myString& operator= (char);
+	myString& operator= (const char*);
+	myString& operator= (const myString&);
 };
 
 #endif
