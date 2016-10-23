@@ -45,7 +45,8 @@ public:
 	friend bool operator!= (const myString&, const char*);
 	friend bool operator!= (const char*, const myString&);
 	friend bool operator!= (const myString&, const myString&) noexcept;
-
+	/* overload operator << */
+	friend std::ostream& operator<< (std::ostream&, const myString&);
 };
 
 #endif

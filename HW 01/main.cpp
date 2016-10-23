@@ -4,10 +4,6 @@
 using namespace std;
 int main(void) {
 	myString a = "123";
-	if(a!="123") {
-		cout << "true" << endl;
-	}else {
-		cout << "false" << endl;
-	}
+	cout << a << endl;
 	return 0;
 }

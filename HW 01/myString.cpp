@@ -125,3 +125,10 @@ bool operator!= (const char *lhs, const myString &rhs) {
 bool operator!= (const myString &lhs, const myString &rhs) noexcept {
 	return !(lhs == rhs);
 }
+/* overload operator << */
+std::ostream& operator<< (std::ostream &os, const myString &str) {
+	for(char c: str.string) {
+		os << c;
+	}
+	return os;
+}
