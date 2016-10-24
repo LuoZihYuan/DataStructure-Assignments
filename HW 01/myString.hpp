@@ -53,6 +53,17 @@ public:
 	size_t size() const noexcept;
 	/* myString.length() */
 	size_t length() const noexcept;
+	/* myString.clear() */
+	void clear() noexcept;
+	/* myString.empty() */
+	bool empty() const noexcept;
+	/* myString.replace() */
+	myString& replace(size_t, size_t, const char*);
+	myString& replace(size_t, size_t, const char*, size_t);
+	myString& replace(size_t, size_t, size_t, char);
+	myString& replace(size_t, size_t, const myString&);
+	myString& replace(size_t, size_t, const myString&, size_t, size_t);
+
 };
 
 #endif

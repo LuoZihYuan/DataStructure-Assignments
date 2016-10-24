@@ -150,3 +150,52 @@ size_t myString::size() const noexcept {
 size_t myString::length() const noexcept {
 	return string.size();
 }
+/* myString.clear() */
+void myString::clear() noexcept {
+	string.clear();
+}
+/* myString.empty() */
+bool myString::empty() const noexcept {
+	return string.empty();
+}
+/* myString.replace() */
+myString& myString::replace(size_t pos, size_t len, const char *s) {
+	std::vector<char>::iterator begin = string.begin() + pos;
+	string.erase(begin, (begin + len));
+	for(int i = 0; s[i] != '\0'; i++) {
+		string.insert(begin + i, s[i]);
+	}
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, const char *s, size_t n) {
+	std::vector<char>::iterator begin = string.begin() + pos;
+	string.erase(begin, (begin + len));
+	for(int i = 0; i < n; i++) {
+		for(int j = 0; s[j] != '\0'; j++) {
+			string.insert(begin++, s[j]);
+		}
+	}
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, size_t n, char c) {
+	std::vector<char>::iterator begin = string.begin() + pos;
+	string.erase(begin, (begin + len));
+	string.insert(begin, n, c);
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, const myString &str) {
+	std::vector<char>::iterator begin = string.begin() + pos;
+	string.erase(begin, (begin + len));
+	for(char c: str.string) {
+		string.insert(begin++, c);
+	}
+	return *this;
+}
+myString& myString::replace(size_t pos, size_t len, const myString &str, size_t subpos, size_t sublen) {
+	std::vector<char>::iterator begin = string.begin() + pos;
+	string.erase(begin, (begin + len));
+	for(int i = 0; i < sublen; i++) {
+		string.insert(begin++, str.string[subpos + i]);
+	}
+	return *this;
+}
