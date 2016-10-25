@@ -9,7 +9,7 @@
 #define MYSTRING_HPP
 #include <vector>
 #include <iostream>
-typedef std::vector<int> occur;
+typedef std::vector<size_t> occur;
 /* overload operator << */
 std::ostream& operator<< (std::ostream&, const occur&);
 
@@ -70,6 +70,14 @@ public:
 	size_t find(char, size_t pos = 0) const;
 	size_t find(const char*, size_t pos = 0) const;
 	size_t find(const myString&, size_t pos = 0) const noexcept;
+	/* myString.freq() */
+	occur freq(char) const;
+	occur freq(const char*) const;
+	occur freq(const myString&) const noexcept;
+	/* myString.del() */
+	myString& del(char);
+	myString& del(const char*);
+	myString& del(const myString&);
 };
 
 #endif

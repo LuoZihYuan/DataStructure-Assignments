@@ -289,3 +289,81 @@ size_t myString::find(const myString &str, size_t pos) const noexcept {
 	}
 	return -1;
 }
+/* myString.freq() */
+occur myString::freq(char c) const {
+	occur list;
+	for(int i = 0; i < string.size(); i++) {
+		if(string[i] == c)
+			list.push_back(i);
+	}
+	return list;
+}
+occur myString::freq(const char *s) const {
+	occur list;
+	std::vector<int> shift = getPrefixArray(s);
+	if(string.size() >= shift.size()) {
+		for(int i = 0, j; i < string.size(); i++) {
+			if(string[i] == s[0]) {
+				for(j = 1; j < shift.size(); j++) {
+					if(string[i+j] != s[j])
+						break;
+				}
+				if(j == shift.size())
+					list.push_back(i);
+				else
+					i += shift[j];
+			}
+		}
+	}
+	return list;
+}
+occur myString::freq(const myString &str) const noexcept {
+	occur list;
+	if(string.size() >= str.string.size()) {
+		std::vector<int> shift = getPrefixArray(str.string);
+		for(int i = 0, j; i < string.size(); i++) {
+			if(string[i] == str.string[0]) {
+				for(j = 1; j < str.string.size(); j++) {
+					if(string[i+j] != str.string[j])
+						break;
+				}
+				if(j == str.string.size())
+					list.push_back(i);
+				else
+					i += shift[j];
+			}
+		}
+	}
+	return list;
+}
+/* myString.del() */
+myString& myString::del(char c) {
+	occur list = freq(c);
+	while(list.size() > 0) {
+		string.erase(string.begin() + list.back());
+		list.pop_back();
+	}
+	return *this;
+}
+size_t strlen(const char *s) {
+	size_t i;
+	for(i = 0; s[i] != '\0'; i++);
+	return i;
+}
+myString& myString::del(const char *s) {
+	occur list = freq(s);
+	size_t len = strlen(s);
+	while(list.size() > 0) {
+		string.erase(string.begin() + list.back(), string.begin() + list.back() + len);
+		list.pop_back();
+	}
+	return *this;
+}
+myString& myString::del(const myString &str) {
+	occur list = freq(str);
+	while(list.size() > 0) {
+		string.erase(string.begin() + list.back(), string.begin() + list.back() + str.string.size());
+		list.pop_back();
+	}
+	return *this;
+}
