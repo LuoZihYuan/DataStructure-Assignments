@@ -199,3 +199,81 @@ myString& myString::replace(size_t pos, size_t len, const myString &str, size_t 
 	}
 	return *this;
 }
+/* myString.find() */
+size_t myString::find(char c, size_t pos) const {
+	for(int i = pos; i < string.size(); i++) {
+		if(string[i] == c)
+			return i;
+	}
+	return -1;
+}
+std::vector<int> getPrefixArray(const char *s) {
+	std::vector<int> shift;
+	shift.push_back(0);
+	for(int i = 1, j = 0; s[i] != '\0'; i++) {
+		if(s[i] == s[j]) {
+			shift.push_back(++j);
+		} else {
+			if(j != 0) {
+				i -= 1;
+				j = shift[j-1];
+			} else {
+				shift.push_back(0);
+			}
+		}
+	}
+	return shift;
+}
+size_t myString::find(const char *s, size_t pos) const {
+	std::vector<int> shift = getPrefixArray(s);
+	if(string.size() >= shift.size()) {
+		for(int i = pos, j; i < string.size(); i++) {
+			if(string[i] == s[0]) {
+				for(j = 1; j < shift.size(); j++) {
+					if(string[i+j] != s[j])
+						break;
+				}
+				if(j == shift.size())
+					return i;
+				else
+					i += shift[j];
+			}
+		}
+	}
+	return -1;
+}
+std::vector<int> getPrefixArray(const std::vector<char> &v) {
+	std::vector<int> shift;
+	shift.push_back(0);
+	for(int i = 1, j = 0; i < v.size(); i++) {
+		if(v[i] == v[j]) {
+			shift.push_back(++j);
+		} else {
+			if(j != 0) {
+				i -= 1;
+				j = shift[j-1];
+			} else {
+				shift.push_back(0);
+			}
+		}
+	}
+	return shift;
+}
+size_t myString::find(const myString &str, size_t pos) const noexcept {
+	if(string.size() >= str.string.size()) {
+		std::vector<int> shift = getPrefixArray(str.string);
+		for(int i = pos, j; i < string.size(); i++) {
+			if(string[i] == str.string[0]) {
+				for(j = 1; j < str.string.size(); j++) {
+					if(string[i+j] != str.string[j])
+						break;
+				}
+				if(j == str.string.size())
+					return i;
+				else
+					i += shift[j];
+			}
+		}
+	}
+	return -1;
+}

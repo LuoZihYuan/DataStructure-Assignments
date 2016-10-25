@@ -63,7 +63,10 @@ public:
 	myString& replace(size_t, size_t, size_t, char);
 	myString& replace(size_t, size_t, const myString&);
 	myString& replace(size_t, size_t, const myString&, size_t, size_t);
-
+	/* myString.find() */
+	size_t find(char, size_t pos = 0) const;
+	size_t find(const char*, size_t pos = 0) const;
+	size_t find(const myString&, size_t pos = 0) const noexcept;
 };
 
 #endif
