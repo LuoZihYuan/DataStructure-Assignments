@@ -7,9 +7,12 @@
 
 #ifndef MYSTRING_HPP
 #define MYSTRING_HPP
-
 #include <vector>
 #include <iostream>
+typedef std::vector<int> occur;
+/* overload operator << */
+std::ostream& operator<< (std::ostream&, const occur&);
+
 class myString {
 private:
 	std::vector<char> string;

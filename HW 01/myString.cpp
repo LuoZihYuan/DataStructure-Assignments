@@ -1,4 +1,16 @@
 #include "myString.hpp"
+/* overload operator << */
+std::ostream& operator<< (std::ostream &os, const occur &status) {
+	os << status.size() << " - (";
+	for(int i = 0; i < status.size(); i++) {
+		os << status[i];
+		if(i != (status.size() - 1))
+			os << ", ";
+	}
+	os << ")";
+	return os;
+}
+
 /* Constructor */
 myString::myString() {
 }
