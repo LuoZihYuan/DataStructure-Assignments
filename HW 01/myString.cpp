@@ -147,6 +147,7 @@ std::ostream& operator<< (std::ostream &os, const myString &str) {
 /* overload operator >> */
 std::istream& operator>> (std::istream &is, myString &str) {
 	char c;
+	str.string.clear();
 	is.get(c);
 	while(c != ' ' && c != '\n') {
 		str.string.push_back(c);
@@ -156,6 +157,7 @@ std::istream& operator>> (std::istream &is, myString &str) {
 }
 std::istream& getline (std::istream &is, myString &str) {
 	char c;
+	str.string.clear();
 	is.get(c);
 	while(c != '\n') {
 		str.string.push_back(c);
@@ -165,6 +167,7 @@ std::istream& getline (std::istream &is, myString &str) {
 }
 std::istream& getline (std::istream &is, myString &str, char delim) {
 	char c;
+	str.string.clear();
 	is.get(c);
 	while(c != '\n' && c != delim) {
 		str.string.push_back(c);
