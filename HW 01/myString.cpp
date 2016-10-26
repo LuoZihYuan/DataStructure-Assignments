@@ -154,6 +154,24 @@ std::istream& operator>> (std::istream &is, myString &str) {
 	}
 	return is;
 }
+std::istream& getline (std::istream &is, myString &str) {
+	char c;
+	is.get(c);
+	while(c != '\n') {
+		str.string.push_back(c);
+		is.get(c);
+	}
+	return is;
+}
+std::istream& getline (std::istream &is, myString &str, char delim) {
+	char c;
+	is.get(c);
+	while(c != '\n' && c != delim) {
+		str.string.push_back(c);
+		is.get(c);
+	}
+	return is;
+}
 /* myString.size() */
 size_t myString::size() const noexcept {
 	return string.size();

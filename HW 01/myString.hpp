@@ -52,6 +52,8 @@ public:
 	friend std::ostream& operator<< (std::ostream&, const myString&);
 	/* overload operator >> */
 	friend std::istream& operator>> (std::istream&, myString&);
+	friend std::istream& getline (std::istream&, myString&);
+	friend std::istream& getline (std::istream&, myString&, char);
 	/* myString.size() */
 	size_t size() const noexcept;
 	/* myString.length() */
