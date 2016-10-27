@@ -372,19 +372,18 @@ size_t strlen(const char *s) {
 	return i;
 }
 myString& myString::del(const char *s) {
-	occur list = freq(s);
-	size_t len = strlen(s);
-	while(list.size() > 0) {
-		string.erase(string.begin() + list.back(), string.begin() + list.back() + len);
-		list.pop_back();
+	size_t len = strlen(s), pos = find(s);
+	while((int)pos != -1) {
+		string.erase(string.begin() + pos, string.begin() + pos + len);
+		pos = find(s);
 	}
 	return *this;
 }
 myString& myString::del(const myString &str) {
-	occur list = freq(str);
-	while(list.size() > 0) {
-		string.erase(string.begin() + list.back(), string.begin() + list.back() + str.string.size());
-		list.pop_back();
+	size_t pos = find(str);
+	while((int)pos != -1) {
+		string.erase(string.begin() + pos, string.begin() + pos + str.string.size());
+		pos = find(str);
 	}
 	return *this;
 }
