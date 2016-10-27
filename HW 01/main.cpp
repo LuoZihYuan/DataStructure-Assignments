@@ -18,17 +18,18 @@ int main(void) {
 		cout << "MODE: ";
 		cin.get(choice);
 		cin.ignore();
-		cout << " >> Leave str blank to return to MENU" << endl << endl;
 		switch(choice) {
-			case '1': frequency(s);
+			case '1': cout << " >> Leave str blank to return to MENU" << endl << endl; 
+				frequency(s);
 				break;
-			case '2': characterDelete(s);
+			case '2': cout << " >> Leave str blank to return to MENU" << endl << endl;
+				characterDelete(s);
 				break;
-			default: cout << "================ OVER ================" << endl;
+			default: cout << endl << "================ OVER ================" << endl;
 				exit(0);
 		}
 	}
-	cout << "================ OVER ================" << endl;
+	cout << endl << "================ OVER ================" << endl;
 	return 0;
 }
 
