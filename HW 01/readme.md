@@ -27,3 +27,5 @@
 > ![CHARACTER_DELETE](./image/4.png)
 >- OVER: Terminate program
 > ![OVER](./image/5.png)
+
+<!-- Hint: Written in MarkDown Language, can also be compiled into HTML -->
