@@ -13,6 +13,8 @@ typedef struct CLIENT {
 	CLIENT(const std::string&, const int&, const int&, const int&);
 	/* Destructor */
 	~CLIENT();
+	/* overload operator = */
+	CLIENT& operator= (const CLIENT&);
 	/* overload operator << */
 	friend std::ostream& operator<< (std::ostream&, const CLIENT&);
 	/* overload operator >> */

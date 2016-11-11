@@ -18,6 +18,14 @@ client::CLIENT(const std::string &name, const int &arrival, const int &service, 
 client::~CLIENT() {
 	client_name.clear();
 }
+/* overload operator = */
+CLIENT& client::operator= (const CLIENT &cli) {
+	client_name = cli.client_name;
+	arrival_time = cli.arrival_time;
+	service_time = cli.service_time;
+	waiting_time = cli.waiting_time;
+	return *this;
+}
 /* overload operator << */
 std::ostream& operator<< (std::ostream &os, const CLIENT &cli) {
 	os << "CLIENT NAME: " << cli.client_name << std::endl;

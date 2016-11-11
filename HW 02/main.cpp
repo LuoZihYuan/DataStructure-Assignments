@@ -7,7 +7,8 @@ int main(void) {
 	a.arrival_time = 1;
 	a.service_time = 2;
 	a.waiting_time = 3;
-	client b = a;
+	client b;
+	b = a;
 	cout << b << endl;
 	return 0;
 }
