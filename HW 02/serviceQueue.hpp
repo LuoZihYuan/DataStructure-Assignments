@@ -22,5 +22,5 @@ public:
 	client& operator[] (size_t);
 	/* serviceQueue.add() */
 	void add(const client&);
-}
+};
 #endif

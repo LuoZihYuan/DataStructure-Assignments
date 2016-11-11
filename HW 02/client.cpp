@@ -2,6 +2,12 @@
 /* Constructor */
 client::CLIENT() {
 }
+client::CLIENT(const CLIENT &cli) {
+	client_name = cli.client_name;
+	arrival_time = cli.arrival_time;
+	service_time = cli.service_time;
+	waiting_time = cli.waiting_time;
+}
 client::CLIENT(const std::string &name, const int &arrival, const int &service, const int &wait) {
 	client_name = name;
 	arrival_time = arrival;

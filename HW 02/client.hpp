@@ -9,6 +9,7 @@ typedef struct CLIENT {
 	int waiting_time;
 	/* Constructor */
 	CLIENT();
+	CLIENT(const CLIENT&);
 	CLIENT(const std::string&, const int&, const int&, const int&);
 	/* Destructor */
 	~CLIENT();
