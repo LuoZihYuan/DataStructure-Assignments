@@ -20,6 +20,8 @@ public:
 	~serviceQueue();
 	/* overload operator [] */
 	client& operator[] (size_t);
+	/* overload operator = */
+	serviceQueue& operator= (const serviceQueue&);
 	/* serviceQueue.add() */
 	void add(const client&);
 };
