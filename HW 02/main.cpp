@@ -12,7 +12,7 @@ int main(void) {
 	for(int i = 0; i < 10; i++) {
 		cout << "Client" << ((i != 9)? "  ": " ") << i+1 << ": ";
 		cin >> a[i];
-		if(a[i].arrival_time < 0 || a[i].service_time < 0 || a[i].waiting_time < 0)
+		if(a[i].arrival_time < 0 || a[i].service_time <= 0 || a[i].waiting_time < 0)
 			break;
 		nov20.add(&a[i]);
 	}
