@@ -1,26 +1,31 @@
-#ifndef CLIENT_HPP
-#define CLIENT_HPP
+#ifndef BASECLIENT_HPP
+#define BASECLIENT_HPP
 #include <string>
 #include <iostream>
-typedef struct CLIENT {
-	std::string client_name;
-	int arrival_time;
-	int service_time;
-	int waiting_time;
+class baseClient {
+	friend class serviceQueue;
+protected:
+	bool served;
+	time_t departure_time;
+public:
+	std::string identifier;
+	time_t arrival_time;
+	time_t service_time;
+	time_t waiting_time;
 	/* Constructor */
-	CLIENT();
-	CLIENT(const CLIENT&);
-	CLIENT(const std::string&, const int&, const int&, const int&);
+	baseClient();
+	baseClient(const baseClient&);
+	baseClient(const std::string&, const time_t&, const time_t&, const time_t&);
 	/* Destructor */
-	~CLIENT();
+	~baseClient();
 	/* overload operator = */
-	CLIENT& operator= (const CLIENT&);
+	baseClient& operator= (const baseClient&);
 	/* overload operator << */
-	friend std::ostream& operator<< (std::ostream&, const CLIENT&);
+	friend std::ostream& operator<< (std::ostream&, const baseClient&);
 	/* overload operator >> */
-	friend std::istream& operator>> (std::istream&, CLIENT&);
-	friend std::istream& getline (std::istream&, CLIENT&);
-	/* client.clear() */
+	friend std::istream& operator>> (std::istream&, baseClient&);
+	friend std::istream& getline (std::istream&, baseClient&);
+	/* baseClient.clear() */
 	void clear();
-} client;
+};
 #endif
