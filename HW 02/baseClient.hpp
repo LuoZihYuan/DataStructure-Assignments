@@ -8,14 +8,15 @@ protected:
 	bool served;
 	time_t departure_time;
 public:
-	std::string identifier;
+	// std::string identifier;
 	time_t arrival_time;
 	time_t service_time;
 	time_t waiting_time;
 	/* Constructor */
 	baseClient();
 	baseClient(const baseClient&);
-	baseClient(const std::string&, const time_t&, const time_t&, const time_t&);
+	baseClient(const time_t&, const time_t&, const time_t&);
+	// baseClient(const std::string&, const time_t&, const time_t&, const time_t&);
 	/* Destructor */
 	~baseClient();
 	/* overload operator = */
@@ -24,7 +25,7 @@ public:
 	friend std::ostream& operator<< (std::ostream&, const baseClient&);
 	/* overload operator >> */
 	friend std::istream& operator>> (std::istream&, baseClient&);
-	friend std::istream& getline (std::istream&, baseClient&);
+	// friend std::istream& getline (std::istream&, baseClient&);
 	/* baseClient.isServed() */
 	bool isServed();
 	/* baseClient.getDepartureTime() */

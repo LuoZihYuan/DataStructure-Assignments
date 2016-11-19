@@ -10,8 +10,9 @@
 #include <vector>
 #include "baseClient.hpp"
 class serviceQueue {
-private:
-	std::vector<baseClient> myQueue;
+protected:
+	baseClient* lastServed;
+	std::vector<baseClient*> myQueue;
 public:
 	/* Constructor */
 	serviceQueue();
@@ -19,10 +20,10 @@ public:
 	/* Destructor */
 	~serviceQueue();
 	/* overload operator [] */
-	baseClient& operator[] (size_t);
+	baseClient* operator[] (size_t);
 	/* overload operator = */
 	serviceQueue& operator= (const serviceQueue&);
 	/* serviceQueue.add() */
-	void add(const baseClient&);
+	void add(baseClient*);
 };
 #endif
