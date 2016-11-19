@@ -10,7 +10,7 @@ serviceQueue::~serviceQueue() {
 	myQueue.clear();
 }
 /* overload operator [] */
-client& serviceQueue::operator[] (size_t pos) {
+baseClient& serviceQueue::operator[] (size_t pos) {
 	return myQueue[pos];
 }
 /* overload operator = */
@@ -19,6 +19,6 @@ serviceQueue& serviceQueue::operator= (const serviceQueue &queue) {
 	return *this;
 }
 /* serviceQueue.add() */
-void serviceQueue::add(const client &newClient) {
+void serviceQueue::add(const baseClient &newClient) {
 	myQueue.push_back(newClient);
 }

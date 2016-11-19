@@ -48,6 +48,14 @@ std::istream& getline (std::istream &is, baseClient &cli) {
 	is >> cli.arrival_time >> cli.service_time >> cli.waiting_time;
 	return is;
 }
+/* baseClient.isServed() */
+bool baseClient::isServed() {
+	return served;
+}
+/* baseClient.getDepartureTime() */
+time_t baseClient::getDepartureTime() {
+	return departure_time;
+}
 /* baseClient.clear() */
 void baseClient::clear() {
 	served = false;

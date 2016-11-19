@@ -25,6 +25,10 @@ public:
 	/* overload operator >> */
 	friend std::istream& operator>> (std::istream&, baseClient&);
 	friend std::istream& getline (std::istream&, baseClient&);
+	/* baseClient.isServed() */
+	bool isServed();
+	/* baseClient.getDepartureTime() */
+	time_t getDepartureTime();
 	/* baseClient.clear() */
 	void clear();
 };
