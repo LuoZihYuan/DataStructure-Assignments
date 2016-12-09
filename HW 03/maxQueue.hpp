@@ -20,11 +20,15 @@ public:
 	~maxQueue();
 	/* overload operator = */
 	maxQueue& operator= (const maxQueue&);
+	/* overload operator << */
+	friend std::ostream& operator<< (std::ostream&, const maxQueue&);
 	/* maxQueue.size() */
 	size_t size() const noexcept;
-	/* myQueue.clear() */
+	/* maxQueue.clear() */
 	void clear() noexcept;
-	/* myQueue.empty() */
+	/* maxQueue.empty() */
 	bool empty() const noexcept;
+	/* maxQueue.push() */
+	void push(const int&);
 };
 #endif
