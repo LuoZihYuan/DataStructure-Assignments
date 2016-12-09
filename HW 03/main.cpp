@@ -10,9 +10,7 @@ int main(void) {
 		queue.push(num);
 		cout << queue << endl << endl;
 	}
-	while(true) {
-		queue.pop();
-		cout << queue << endl;
-	}
+	cin >> count;
+	cout << queue.computSize(count) << endl;
 	return 0;
 }

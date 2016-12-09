@@ -32,5 +32,7 @@ public:
 	void push(const int&);
 	/* maxQueue.pop() */
 	void pop();
+	/* maxQueue.computSize() */
+	size_t computSize(const size_t&);
 };
 #endif

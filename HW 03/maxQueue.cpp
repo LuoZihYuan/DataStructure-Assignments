@@ -34,12 +34,12 @@ std::ostream& operator<< (std::ostream &os, const maxQueue &queue) {
 size_t maxQueue::size() const noexcept {
 	return (myQueue.size() - 1);
 }
-/* myQueue.clear() */
+/* maxQueue.clear() */
 void maxQueue::clear() noexcept {
 	myQueue.clear();
 	myQueue.push_back(0);
 }
-/* myQueue.empty() */
+/* maxQueue.empty() */
 bool maxQueue::empty() const noexcept {
 	return (myQueue.size() <= 1) ? true: false;
 }
@@ -83,4 +83,21 @@ void maxQueue::pop() {
 		childPosition = position * 2;
 	}
 	myQueue.erase(myQueue.begin() + position);
+}
+/* maxQueue.computSize() */
+size_t maxQueue::computSize(const size_t &pos) {
+	if (pos > size()) {
+		throw std::out_of_range("maxQueue");
+	}
+	size_t queueSize = size();
+	size_t level = 0;
+	for (size_t i = pos * 2; i <= queueSize; i *= 2) {
+		level += 1;
+	}
+	size_t remainder = (queueSize - (pos << level)) + 1;
+	size_t limit = 1 << (level - 1);
+	remainder = (remainder > limit) ? limit : remainder;
+	size_t divisible = limit - 1;
+	size_t total = divisible + remainder;
+	return total;
 }
