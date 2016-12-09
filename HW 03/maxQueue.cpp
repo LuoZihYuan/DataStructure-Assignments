@@ -85,7 +85,7 @@ void maxQueue::pop() {
 	myQueue.erase(myQueue.begin() + position);
 }
 /* maxQueue.computSize() */
-size_t maxQueue::computSize(const size_t &pos) {
+size_t maxQueue::computSize(const size_t &pos) const {
 	if (pos > size()) {
 		throw std::out_of_range("maxQueue");
 	}

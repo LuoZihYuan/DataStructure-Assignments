@@ -33,6 +33,6 @@ public:
 	/* maxQueue.pop() */
 	void pop();
 	/* maxQueue.computSize() */
-	size_t computSize(const size_t&);
+	size_t computSize(const size_t&) const;
 };
 #endif
