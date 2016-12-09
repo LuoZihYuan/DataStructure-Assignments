@@ -30,5 +30,7 @@ public:
 	bool empty() const noexcept;
 	/* maxQueue.push() */
 	void push(const int&);
+	/* maxQueue.pop() */
+	void pop();
 };
 #endif

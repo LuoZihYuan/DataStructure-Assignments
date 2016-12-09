@@ -3,11 +3,16 @@
 using namespace std;
 int main(void) {
 	maxQueue queue;
-	int num;
-	for (int i = 0; i < 7; i++) {
+	int count, num;
+	cin >> count;
+	for (int i = 0; i < count; i++) {
 		cin >> num;
 		queue.push(num);
+		cout << queue << endl << endl;
 	}
-	cout << queue << endl;
+	while(true) {
+		queue.pop();
+		cout << queue << endl;
+	}
 	return 0;
 }

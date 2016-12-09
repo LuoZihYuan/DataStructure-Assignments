@@ -20,7 +20,8 @@ std::ostream& operator<< (std::ostream &os, const maxQueue &queue) {
 	size_t position = queue.size();
 	for (size_t i = 1, check = 1; i <= position; i++) {
 		os << queue.myQueue[i];
-		if (i == check) {
+		if (i == position) {
+		} else if (i == check) {
 			os << std::endl;
 			check = check * 2 + 1;
 		} else {
@@ -57,4 +58,29 @@ void maxQueue::push(const int &num) {
 			break;
 		}
 	}
+}
+/* maxQueue.pop() */
+void maxQueue::pop() {
+	size_t position = 1;
+	size_t childPosition = position * 2;
+	size_t queueSize = size();
+	if (queueSize == 0) {
+		return;
+	}
+	while (childPosition <= queueSize) {
+		size_t swapPosition;
+		if (childPosition == queueSize) {
+			swapPosition = childPosition;
+		} else {
+			swapPosition = (myQueue[childPosition] > myQueue[childPosition + 1])
+						   ? childPosition
+						   : childPosition + 1;
+		}
+		int temp = myQueue[position];
+		myQueue[position] = myQueue[swapPosition];
+		myQueue[swapPosition] = temp;
+		position = swapPosition;
+		childPosition = position * 2;
+	}
+	myQueue.erase(myQueue.begin() + position);
 }
