@@ -4,20 +4,20 @@ using namespace std;
 void frequency(const myString&);
 void characterDelete(myString&);
 int main(void) {
-	int choice;
+	char choice;
 	myString s;
 	cout << "================= GO =================" << endl;
 	cout << "S: ";
 	getline(cin, s);
 	while(s.size() > 0){
-		static char choice;
 		cout << endl << "================ MENU ================" << endl;
 		cout << " [1] Frequency" << endl;
 		cout << " [2] CharacterDelete" << endl;
 		cout << " ... EXIT" << endl << endl;
 		cout << "MODE: ";
-		cin.get(choice);
+		cin.clear();
 		cin.ignore();
+		cin.get(choice);
 		switch(choice) {
 			case '1': cout << " >> Leave str blank to return to MENU" << endl << endl; 
 				frequency(s);
@@ -39,6 +39,8 @@ void frequency(const myString &s) {
 	do {
 		cout << endl << "S: " << s << endl;
 		cout << "str: ";
+		cin.clear();
+		cin.ignore();
 		getline(cin, str);
 		if(str.size() > 0) {
 			cout << "ans: " << s.freq(str) << endl;
@@ -52,6 +54,8 @@ void characterDelete(myString &s) {
 	do {
 		cout << endl << "S: " << s << endl;
 		cout << "str: ";
+		cin.clear();
+		cin.ignore();
 		getline(cin, str);
 		if(str.size() > 0) {
 			cout << "ans: " << s.del(str) << endl;
