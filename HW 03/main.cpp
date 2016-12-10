@@ -19,13 +19,14 @@ int main(void) {
 	cout << "Initial: " << endl;
 	cout << queue << endl;
 	while (true) {
-		static char choice;
+		char choice;
 		cout << endl << "================= MENU =================" << endl;
 		cout << " [1] Insert" << endl;
 		cout << " [2] Delete" << endl;
 		cout << " [3] Compute Size" << endl;
 		cout << " ... EXIT" << endl << endl;
 		cout << "MODE: ";
+		cin.clear();
 		cin.ignore();
 		cin.get(choice);
 		switch(choice) {
@@ -71,6 +72,10 @@ void computSize(const maxQueue &queue) {
 	cout << endl << "============ 3.Compute Size ============" << endl;
 	cout << "Position: ";
 	cin >> position;
-	size_t total = queue.computSize(position);
-	cout << "Total: " << total << endl;
+	if ((position > 0) && (position <= queue.size())) {
+		size_t total = queue.computSize(position);
+		cout << "Total: " << total << endl;
+	} else {
+		cout << "No element in position " << position << endl;
+	}
 }

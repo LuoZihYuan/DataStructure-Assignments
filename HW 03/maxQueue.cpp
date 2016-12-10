@@ -86,10 +86,10 @@ void maxQueue::pop() {
 }
 /* maxQueue.computSize() */
 size_t maxQueue::computSize(const size_t &pos) const {
-	if (pos > size()) {
+	size_t queueSize = size();
+	if ((pos <= 0) || (pos > queueSize)) {
 		throw std::out_of_range("maxQueue");
 	}
-	size_t queueSize = size();
 	size_t level = 0;
 	for (size_t i = pos * 2; i <= queueSize; i *= 2) {
 		level += 1;
@@ -98,6 +98,6 @@ size_t maxQueue::computSize(const size_t &pos) const {
 	size_t limit = 1 << (level - 1);
 	remainder = (remainder > limit) ? limit : remainder;
 	size_t divisible = limit - 1;
-	size_t total = divisible + remainder;
+	size_t total = (level == 0) ? 0 : divisible + remainder;
 	return total;
 }
