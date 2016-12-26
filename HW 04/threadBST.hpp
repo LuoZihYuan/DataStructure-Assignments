@@ -13,6 +13,8 @@
 class threadBST {
 private:
 	threadNode *root;
+	threadNode *max;
+	threadNode *min;
 	size_t size;
 public:
 	/* Constructor */

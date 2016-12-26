@@ -1,4 +1,4 @@
-/* STL Version should be at least C++11 to support Vector */
+/* STL Version should be at least C++11 to support Function Deletion */
 #ifndef __cplusplus
 	#error C++ is required
 #elif __cplusplus <= 199711L
