@@ -9,28 +9,19 @@
 #define THREADBST_HPP
 #include <vector>
 #include <iostream>
+#include "threadNode.hpp"
 class threadBST {
 private:
-	/* Node of a Binary Search Tree */
-	typedef struct NODE{
-		int num;
-		size_t leftSubtree;
-		struct NODE *leftNode;
-		struct NODE *rightNode;
-		struct NODE *leftThread;
-		struct NODE *rightThread;
-	} node;
-
+	threadNode *root;
 	size_t size;
-	node *root;
 public:
 	/* Constructor */
 	threadBST();
-	threadBST(const int*);
-	threadBST(const std::vecotr<int>&);
+	threadBST(const std::vector<int>&);
 	threadBST(const threadBST&);
 	/* Destructor */
 	~threadBST();
 	/* threadBST.add() */
+	void add(const int&);
 };
 #endif

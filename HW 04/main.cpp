@@ -1,3 +1,4 @@
+#include <vector>
 #include <iostream>
 #include "threadBST.hpp"
 using namespace std;
