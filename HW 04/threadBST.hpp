@@ -33,6 +33,8 @@ public:
 	bool empty() const noexcept;
 	/* threadBST.add() */
 	void add(const int&);
+	/* threadBST.remove() */
+	// void remove(const int&);
 	/* threadBST.leftSize() */
 	std::vector<int> leftSize() const noexcept;
 	/* threadBST.intAtRank() */

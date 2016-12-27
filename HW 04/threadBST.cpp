@@ -73,10 +73,9 @@ void threadBST::add(const int &num) {
 		root = newNode;
 		min = newNode;
 		max = newNode;
-		count += 1;
 	} else {
 		// determine route taken
-		enum Route { left, right, none};
+		enum Route { left, right};
 
 		Route lastRoute;
 		currentNode = root;
@@ -96,30 +95,79 @@ void threadBST::add(const int &num) {
 				lastRoute = left;
 			} else {
 				delete newNode;
-				lastRoute = none;
+				return;
 			}
 		}
 
-		if (lastRoute != none) {
-			if (lastRoute == left) {
-				previousNode->leftNode = newNode;
-			} else  {
-				previousNode->rightNode = newNode;
-			}
-			if (newNode->leftThread != NULL) {
-				newNode->leftThread->rightThread = newNode;
-			} else {
-				min = newNode;
-			}
-			if (newNode->rightThread != NULL) {
-				newNode->rightThread->leftThread = newNode;
-			} else {
-				max = newNode;
-			}
-			count += 1;
+		// link node
+		if (lastRoute == left) {
+			previousNode->leftNode = newNode;
+		} else  {
+			previousNode->rightNode = newNode;
+		}
+		// link thread
+		if (newNode->leftThread != NULL) {
+			newNode->leftThread->rightThread = newNode;
+		} else {
+			min = newNode;
+		}
+		if (newNode->rightThread != NULL) {
+			newNode->rightThread->leftThread = newNode;
+		} else {
+			max = newNode;
 		}
 	}
+	count += 1;
 }
+/* threadBST.remove() */
+// void threadBST::remove(const int &num) {
+// 	threadNode *currentNode, *previousNode;
+// 	previousNode = NULL;
+// 	currentNode = root;
+
+// 	// tree trasversal
+// 	while(currentNode != NULL) {
+// 		if (num > currentNode->num) {
+// 			if (currentNode->rightNode != NULL) {
+// 				previousNode = currentNode;
+// 				currentNode = currentNode->rightNode;
+// 			} else {
+// 				return;
+// 			}
+// 		} else if (num < currentNode->num) {
+// 			if (currentNode->leftNode != NULL) {
+// 				previousNode = currentNode;
+// 				currentNode = currentNode->leftNode;
+// 			} else {
+// 				return;
+// 			}
+// 		} else {
+// 			break;
+// 		}
+// 	}
+
+// 	// link thread
+// 	if (currentNode->leftThread != NULL) {
+// 		currentNode->leftThread->rightThread = currentNode->rightThread;
+// 	} else {
+// 		min = currentNode->rightThread;
+// 	}
+// 	if (currentNode->rightThread != NULL) {
+// 		currentNode->rightThread->leftThread = currentNode->leftThread;
+// 	}else {
+// 		max = currentNode->leftThread;
+// 	}
+// 	// link node
+// 	if ((currentNode->leftNode != NULL) && (currentNode->rightNode != NULL)) {
+
+// 	} else if (currentNode->leftNode != NULL) {
+
+// 	} else if (currentNode->rightNode != NULL) {
+
+// 	} else {
+		
+// 	}
+// }
 /* threadBST.leftSize() */
 std::vector<int> threadBST::leftSize() const noexcept {
 	std::vector<int> result;
